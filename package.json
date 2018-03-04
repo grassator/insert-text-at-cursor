@@ -1,6 +1,6 @@
 {
   "name": "insert-text-at-cursor",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Crossbrowser lib for inserting text at selection in a textarea / input",
   "repository": {
     "type": "git",
