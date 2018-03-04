@@ -42,6 +42,7 @@
   "files": [
     "index.js",
     "dist/",
-    "LICENSE"
+    "LICENSE",
+    "test.html"
   ]
 }
