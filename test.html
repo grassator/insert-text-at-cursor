@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+</head>
+<body>
+    <h3>Press Enter inside a form field to see the effect</h3>
+    <p>Each press should be replaced with a consecutive number in braces.</p>
+    <textarea id="textarea" cols="30" rows="10"></textarea>
+    <br><br>
+    <input type="text" id="text">
+    <script src="dist/index.umd.js"></script>
+    <script>
+        /** @this {HTMLElement} */
+        function indicateChange (input) {
+          input.style.borderColor = 'green';
+          input.style.borderWidth = '1px';
+          input.style.borderStyle = 'solid';
+          clearTimeout(input._timeout);
+          input._timeout = setTimeout(function() {
+            input.style.borderColor = '';
+            input.style.borderWidth = '';
+            input.style.borderStyle = '';
+          }, 1000);
+        }
+
+        /** @this {HTMLElement} */
+        function replaceEnter(e) {
+          this._counter = this._counter || 0;
+          if (e.keyCode === 13) {
+            e.preventDefault ? e.preventDefault() : (e.returnValue = false);
+            insertTextAtCursor(this, '{' + (this._counter++) + '}');
+          }
+        }
+
+        /** @param {HTMLElement} input */
+        function setup (input) {
+          input.onkeypress = function (e) {
+            replaceEnter.call(input, e || window.event);
+          };
+          if ('oninput' in input) {
+            input.oninput = function () {
+              indicateChange(input);
+            };
+          } else {
+            input.onchange = function () {
+              indicateChange(input);
+            };
+          }
+        }
+
+        setup(document.getElementById('textarea'));
+        setup(document.getElementById('text'));
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+{
+  "name": "insert-text-at-cursor",
+  "version": "0.1.0",
+  "description": "Crossbrowser lib for inserting text at selection in a textarea / input",
+  "main": "dist/index.umd.js",
+  "module": "index.js",
+  "scripts": {
+    "watch": "rollup -c rollup.config.js --watch",
+    "build": "npm run build:dev && npm run build:prod",
+    "build:dev": "rollup -c rollup.config.js",
+    "build:prod": "rollup -c rollup.config.js --environment NODE_ENV:production",
+    "lint": "eslint index.mjs",
+    "format": "eslint index.mjs --fix",
+    "test": "echo 'Automated tests not available. Open test.html in your browser.'"
+  },
+  "keywords": [
+    "text",
+    "range",
+    "selection",
+    "textarea"
+  ],
+  "author": "Dmitriy Kubyshkin <dmitriy@kubyshkin.name>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "eslint-config-prettier": "^2.9.0",
+    "rollup": "^0.56.3",
+    "rollup-plugin-babel": "^3.0.3",
+    "rollup-plugin-uglify": "^3.0.0"
+  },
+  "dependencies": {
+    "eslint": "^4.18.2",
+    "eslint-plugin-prettier": "^2.6.0",
+    "prettier": "^1.11.1"
+  },
+  "files": [
+    "index.js",
+    "dist/"
+  ]
+}
