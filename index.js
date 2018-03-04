@@ -22,14 +22,18 @@ function canManipulateViaTextNodes(input) {
  * @returns {void}
  */
 export default function(input, text) {
+  // Most of the used APIs only work with the field selected
   input.focus();
 
   // IE 8-10
   if (document.selection) {
     const ieRange = document.selection.createRange();
     ieRange.text = text;
-    ieRange.collapse(false);
+
+    // Move cursor after the inserted text
+    ieRange.collapse(false /* to the end */);
     ieRange.select();
+
     return;
   }
 

@@ -2,9 +2,14 @@
   "name": "insert-text-at-cursor",
   "version": "0.1.0",
   "description": "Crossbrowser lib for inserting text at selection in a textarea / input",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:grassator/insert-text-at-cursor.git"
+  },
   "main": "dist/index.umd.js",
   "module": "index.js",
   "scripts": {
+    "prepublishOnly": "npm run build",
     "watch": "rollup -c rollup.config.js --watch",
     "build": "npm run build:dev && npm run build:prod",
     "build:dev": "rollup -c rollup.config.js",
@@ -36,6 +41,7 @@
   },
   "files": [
     "index.js",
-    "dist/"
+    "dist/",
+    "LICENSE"
   ]
 }
