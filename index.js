@@ -5,11 +5,11 @@ let browserSupportsTextareaTextNodes;
  * @return {boolean}
  */
 function canManipulateViaTextNodes(input) {
-  if (input.nodeName !== 'TEXTAREA') {
+  if (input.nodeName !== "TEXTAREA") {
     return false;
   }
-  if (typeof browserSupportsTextareaTextNodes === 'undefined') {
-    const textarea = document.createElement('textarea');
+  if (typeof browserSupportsTextareaTextNodes === "undefined") {
+    const textarea = document.createElement("textarea");
     textarea.value = 1;
     browserSupportsTextareaTextNodes = !!textarea.firstChild;
   }
@@ -53,33 +53,27 @@ export default function(input, text) {
           // Otherwise we need to find a nodes for start and end
           let offset = 0;
           let startNode = null;
-          let startNodeOffset = 0;
           let endNode = null;
-          let endNodeOffset = 0;
+
+          // To make a change we just need a Range, not a Selection
+          const range = document.createRange();
 
           while (node && (startNode === null || endNode === null)) {
             const nodeLength = node.nodeValue.length;
 
             // if start of the selection falls into current node
             if (start >= offset && start <= offset + nodeLength) {
-              startNode = node;
-              startNodeOffset = start - offset;
+              range.setStart((startNode = node), start - offset);
             }
 
             // if end of the selection falls into current node
             if (end >= offset && end <= offset + nodeLength) {
-              endNode = node;
-              endNodeOffset = end - offset;
+              range.setEnd((endNode = node), end - offset);
             }
 
             offset += nodeLength;
             node = node.nextSibling;
           }
-
-          // To make a change we just need a Range, not a Selection
-          const range = document.createRange();
-          range.setStart(startNode, startNodeOffset);
-          range.setEnd(endNode, endNodeOffset);
 
           // If there is some text selected, remove it as we should replace it
           if (start !== end) {
