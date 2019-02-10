@@ -1,7 +1,7 @@
 {
   "name": "insert-text-at-cursor",
-  "version": "0.1.1",
-  "description": "Crossbrowser lib for inserting text at selection in a textarea / input",
+  "version": "0.1.2",
+  "description": "Cross-browser lib for inserting text at selection in a textarea / input",
   "repository": {
     "type": "git",
     "url": "git@github.com:grassator/insert-text-at-cursor.git"
@@ -14,8 +14,8 @@
     "build": "npm run build:dev && npm run build:prod",
     "build:dev": "rollup -c rollup.config.js",
     "build:prod": "rollup -c rollup.config.js --environment NODE_ENV:production",
-    "lint": "eslint index.mjs",
-    "format": "eslint index.mjs --fix",
+    "lint": "eslint index.js",
+    "format": "eslint index.js --fix",
     "test": "echo 'Automated tests not available. Open test.html in your browser.'"
   },
   "keywords": [
