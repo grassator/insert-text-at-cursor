@@ -1,4 +1,4 @@
-import uglify from "rollup-plugin-uglify";
+import { uglify } from "rollup-plugin-uglify";
 import babel from "rollup-plugin-babel";
 
 const isProduction = process.env.NODE_ENV === "production";
