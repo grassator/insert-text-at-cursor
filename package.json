@@ -7,7 +7,7 @@
     "url": "git@github.com:grassator/insert-text-at-cursor.git"
   },
   "main": "dist/index.umd.js",
-  "module": "index.js",
+  "module": "dist/index.esm.js",
   "scripts": {
     "prepublishOnly": "npm run build",
     "watch": "rollup -c rollup.config.js --watch",
